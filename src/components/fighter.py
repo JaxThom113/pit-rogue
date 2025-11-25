@@ -2,12 +2,12 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from components.base_component import BaseComponent
-from render_order import RenderOrder
-import color
+from src.components.base_component import BaseComponent
+from src.render_order import RenderOrder
+from src import color
 
 if TYPE_CHECKING:
-    from entity import Actor
+    from src.entity import Actor
 
 
 class Fighter(BaseComponent):

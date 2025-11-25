@@ -2,12 +2,12 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional, Tuple
 
-import color
-import exceptions
+from src import color
+from src import exceptions
 
 if TYPE_CHECKING:
-    from engine import Engine
-    from entity import Actor, Entity, Item
+    from src.engine import Engine
+    from src.entity import Actor, Entity, Item
 
 
 class Action:

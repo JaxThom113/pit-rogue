@@ -5,13 +5,13 @@ import random
 
 import tcod
 
-from game_map import GameMap
-import entity_factories
-import tile_types
+from src.game_map import GameMap
+from src import entity_factories
+from src import tile_types
 
 if TYPE_CHECKING:
-    from engine import Engine
-    from entity import Entity
+    from src.engine import Engine
+    from src.entity import Entity
 
 
 max_items_by_floor = [

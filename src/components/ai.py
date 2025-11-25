@@ -6,10 +6,10 @@ import random
 import numpy as np
 import tcod
 
-from actions import Action, BumpAction, MeleeAction, MovementAction, WaitAction
+from src.actions import Action, BumpAction, MeleeAction, MovementAction, WaitAction
 
 if TYPE_CHECKING:
-    from entity import Actor
+    from src.entity import Actor
 
 
 class BaseAI(Action):

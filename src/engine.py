@@ -7,13 +7,13 @@ import pickle
 from tcod.console import Console
 from tcod.map import compute_fov
 
-from message_log import MessageLog
-import exceptions
-import render_functions
+from src.message_log import MessageLog
+from src import exceptions
+from src import render_functions
 
 if TYPE_CHECKING:
-    from entity import Actor
-    from game_map import GameMap, GameWorld
+    from src.entity import Actor
+    from src.game_map import GameMap, GameWorld
 
 
 class Engine:

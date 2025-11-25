@@ -4,17 +4,17 @@ from typing import TYPE_CHECKING, Optional, Tuple, Type, TypeVar, Union
 import copy
 import math
 
-from render_order import RenderOrder
+from src.render_order import RenderOrder
 
 if TYPE_CHECKING:
-    from components.ai import BaseAI
-    from components.consumable import Consumable
-    from components.equipment import Equipment
-    from components.equippable import Equippable
-    from components.fighter import Fighter
-    from components.inventory import Inventory
-    from components.level import Level
-    from game_map import GameMap
+    from src.components.ai import BaseAI
+    from src.components.consumable import Consumable
+    from src.components.equipment import Equipment
+    from src.components.equippable import Equippable
+    from src.components.fighter import Fighter
+    from src.components.inventory import Inventory
+    from src.components.level import Level
+    from src.game_map import GameMap
 
 T = TypeVar("T", bound="Entity")
 

@@ -5,14 +5,14 @@ import os
 
 import tcod
 
-from actions import Action, BumpAction, PickupAction, WaitAction
-import actions
-import color
-import exceptions
+from src.actions import Action, BumpAction, PickupAction, WaitAction
+from src import actions
+from src import color
+from src import exceptions
 
 if TYPE_CHECKING:
-    from engine import Engine
-    from entity import Item
+    from src.engine import Engine
+    from src.entity import Item
 
 
 MOVE_KEYS = {
@@ -148,7 +148,8 @@ class EventHandler(BaseEventHandler):
 
     def ev_mousemotion(self, event: tcod.event.MouseMotion) -> None:
         if self.engine.game_map.in_bounds(event.tile.x, event.tile.y):
-            self.engine.mouse_location = event.tile.x, event.tile.y
+            # wrap coordinates with int() to prevent mouse hover error
+            self.engine.mouse_location = int(event.tile.x), int(event.tile.y)
 
     def on_render(self, console: tcod.Console) -> None:
         self.engine.render(console)

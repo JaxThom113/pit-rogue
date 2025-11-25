@@ -10,11 +10,11 @@ import traceback
 from PIL import Image  # type: ignore
 import tcod
 
-from engine import Engine
-from game_map import GameWorld
-import color
-import entity_factories
-import input_handlers
+from src.engine import Engine
+from src.game_map import GameWorld
+from src import color
+from src import entity_factories
+from src import input_handlers
 
 # Load the background image.  Pillow returns an object convertable into a NumPy array.
 background_image = Image.open("data/menu_background.png")
