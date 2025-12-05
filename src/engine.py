@@ -46,22 +46,32 @@ class Engine:
     def render(self, console: Console) -> None:
         self.game_map.render(console)
 
-        self.message_log.render(console=console, x=21, y=45, width=40, height=5)
+        self.message_log.render(console=console, x=41, y=31, width=40, height=4)
 
-        render_functions.render_bar(
+        render_functions.render_hp_bar(
             console=console,
-            current_value=self.player.fighter.hp,
-            maximum_value=self.player.fighter.max_hp,
-            total_width=20,
+            current_hp=self.player.fighter.hp,
+            maximum_hp=self.player.fighter.max_hp,
+            total_width=40,
+            location=(0, 31),
+        )
+
+        render_functions.render_lvl_bar(
+            console=console,
+            level=self.player.level.current_level,
+            current_xp=self.player.level.current_xp,
+            maximum_xp=self.player.level.experience_to_next_level,
+            total_width=40,
+            location=(0, 32),
         )
 
         render_functions.render_dungeon_level(
             console=console,
             dungeon_level=self.game_world.current_floor,
-            location=(0, 47),
+            location=(0, 33),
         )
 
-        render_functions.render_names_at_mouse_location(console=console, x=21, y=44, engine=self)
+        render_functions.render_names_at_mouse_location(console=console, x=83, y=31, engine=self)
 
     def save_as(self, filename: str) -> None:
         """Save this Engine instance as a compressed file."""

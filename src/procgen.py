@@ -14,17 +14,11 @@ if TYPE_CHECKING:
     from src.entity import Entity
 
 
+# item generation settings
 max_items_by_floor = [
     (1, 1),
     (4, 2),
 ]
-
-max_monsters_by_floor = [
-    (1, 2),
-    (4, 3),
-    (6, 5),
-]
-
 item_chances: Dict[int, List[Tuple[Entity, int]]] = {
     0: [(entity_factories.health_potion, 35)],
     2: [(entity_factories.confusion_scroll, 10)],
@@ -32,6 +26,12 @@ item_chances: Dict[int, List[Tuple[Entity, int]]] = {
     6: [(entity_factories.fireball_scroll, 25), (entity_factories.chain_mail, 15)],
 }
 
+# monster generation settings
+max_monsters_by_floor = [
+    (1, 2),
+    (4, 3),
+    (6, 5),
+]
 enemy_chances: Dict[int, List[Tuple[Entity, int]]] = {
     0: [(entity_factories.orc, 80)],
     3: [(entity_factories.troll, 15)],

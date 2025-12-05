@@ -17,13 +17,13 @@ from src import entity_factories
 from src import input_handlers
 
 # Load the background image.  Pillow returns an object convertable into a NumPy array.
-background_image = Image.open("data/menu_background.png")
+# background_image = Image.open("data/menu_background.png")
 
 
 def new_game() -> Engine:
     """Return a brand new game session as an Engine instance."""
     map_width = 80
-    map_height = 43
+    map_height = 30 #43 # start at 43, whatever you remove from height in main, remove the same amount here
 
     room_max_size = 10
     room_min_size = 6
@@ -45,7 +45,7 @@ def new_game() -> Engine:
     engine.game_world.generate_floor()
     engine.update_fov()
 
-    engine.message_log.add_message("Hello and welcome, adventurer, to yet another dungeon!", color.welcome_text)
+    engine.message_log.add_message("You wake up, stuck at the bottom of the Pits of Doom!", color.welcome_text)
 
     dagger = copy.deepcopy(entity_factories.dagger)
     leather_armor = copy.deepcopy(entity_factories.leather_armor)
@@ -75,25 +75,28 @@ class MainMenu(input_handlers.BaseEventHandler):
 
     def on_render(self, console: tcod.Console) -> None:
         """Render the main menu on a background image."""
-        console.draw_semigraphics(background_image, 0, 0)
+        #console.draw_semigraphics(background_image, 0, 0)
+        console.clear(bg=(0x77, 0x77, 0x77))
 
         console.print(
             console.width // 2,
             console.height // 2 - 4,
-            "TOMBS OF THE ANCIENT KINGS",
+            "PIT ROGUE",
             fg=color.menu_title,
+            bg=color.black,
             alignment=tcod.CENTER,
         )
         console.print(
             console.width // 2,
             console.height - 2,
-            "By (Your name here)",
+            "By JaxThom113",
             fg=color.menu_title,
+            bg=color.black,
             alignment=tcod.CENTER,
         )
 
         menu_width = 24
-        for i, text in enumerate(["[N] Play a new game", "[C] Continue last game", "[Q] Quit"]):
+        for i, text in enumerate(["[N] New game", "[L] Load game", "[Q] Quit"]):
             console.print(
                 console.width // 2,
                 console.height // 2 - 2 + i,
@@ -101,7 +104,6 @@ class MainMenu(input_handlers.BaseEventHandler):
                 fg=color.menu_text,
                 bg=color.black,
                 alignment=tcod.CENTER,
-                bg_blend=tcod.BKGND_ALPHA(64),
             )
 
     def ev_keydown(self, event: tcod.event.KeyDown) -> Optional[input_handlers.BaseEventHandler]:

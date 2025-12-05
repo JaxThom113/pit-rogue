@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import traceback
 
+from PIL import Image
 import tcod
+import os
 
 from src import color
 from src import exceptions
@@ -17,10 +19,11 @@ def save_game(handler: input_handlers.BaseEventHandler, filename: str) -> None:
 
 
 def main() -> None:
-    screen_width = 80
-    screen_height = 50
+    screen_width = 100 #80
+    screen_height = 35 #50
 
-    tileset = tcod.tileset.load_tilesheet("data/dejavu10x10_gs_tc.png", 32, 8, tcod.tileset.CHARMAP_TCOD)
+    # tileset = tcod.tileset.load_tilesheet("data/dejavu10x10_gs_tc.png", 32, 8, tcod.tileset.CHARMAP_TCOD)
+    tileset = tcod.tileset.load_tilesheet("data/brogue_tiles.png", 16, 24, tcod.tileset.CHARMAP_CP437)
 
     handler: input_handlers.BaseEventHandler = setup_game.MainMenu()
 
@@ -28,7 +31,7 @@ def main() -> None:
         columns=screen_width,
         rows=screen_height,
         tileset=tileset,
-        title="Yet Another Roguelike Tutorial",
+        title="Pit Rogue",
         vsync=True,
     ) as context:
         root_console = tcod.Console(screen_width, screen_height, order="F")
